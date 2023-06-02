@@ -1,11 +1,11 @@
 pipeline {
 	agent {
-		node {
-		label 'nodejs'
+        node {
+            label 'nodejs'
         }
     }
 
-    stages {
+stages {
         stage('Run Tests') {
             parallel {
 
@@ -17,8 +17,10 @@ pipeline {
 
                 stage('Frontend Tests') {
                     steps {
-                        sh 'nde ./frontend/test.js'
+                        sh 'node ./frontend/test.js'
                     }
                 }
             }
         }
+    }
+}
