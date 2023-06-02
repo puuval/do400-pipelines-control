@@ -25,6 +25,14 @@ stages {
                         sh 'node ./frontend/test.js'
                     }
                 }
+		stage('Deploy') {
+		    when {
+			expressions { env.GIT_BRANCH == 'origin/main' }
+		    }
+		    steps {
+			echo 'Deploying...'
+		    }
+		}
             }
         }
     }
