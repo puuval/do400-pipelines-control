@@ -20,15 +20,15 @@ stages {
                 }
 
                 stage('Frontend Tests') {
-		    when { expression { params.RUN_FRONTEND_TESTS } }
+		    when {
+			expression { params.RUN_FRONTEND_TESTS } }
                     steps {
                         sh 'node ./frontend/test.js'
                     }
                 }
 		stage('Deploy') {
 		    when {
-			expressions { env.GIT_BRANCH == 'origin/main' }
-		    }
+			expression { env.GIT_BRANCH == 'origin/main' } }
 		    steps {
 			echo 'Deploying...'
 		    }
